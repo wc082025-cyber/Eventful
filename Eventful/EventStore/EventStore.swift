@@ -8,16 +8,16 @@
 import Foundation
 import Combine
 
-struct Event: Identifiable, Codable {
-    let id: UUID
-    let title: String
-    let date: Date
-}
+
 
 final class EventStore: ObservableObject {
     
     @Published var events: [Event] = [] {
         didSet {save()}
+    }
+    
+    init() {
+        load()
     }
     
     private func save() {
@@ -26,11 +26,27 @@ final class EventStore: ObservableObject {
         }
     }
     
-    private func load() {
-        if let data = UserDefaults.standard.data(forKey: "events"),
-           let events = try? JSONDecoder().decode([Event].self, from: data) {
-            self.events = events
-        }
+ private func load() {
+     guard let data = UserDefaults.standard.data(forKey: "events"),
+           let decoded = try? JSONDecoder().decode([Event].self, from: data) else {
+         return
+     }
+self.events = decoded
+    }
+    
+    
+    // delete event
+    
+    func delete(_ event: Event) {
+        events.removeAll { $0.id == event.id }
+    }
+    
+    
+    // move event
+    
+    func move(from sourceIndex: Int, to destinationIndex: Int) {
+        let movedEvent = events.remove(at: sourceIndex)
+        events.insert(movedEvent, at: destinationIndex)
     }
     
 } // final class
