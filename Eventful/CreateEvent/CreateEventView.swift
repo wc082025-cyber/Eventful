@@ -15,6 +15,8 @@ struct CreateEventView: View {
     
     @StateObject private var store = EventStore()
     
+    @State private var invite: String = ""
+    
     @State private var eventName: String = ""
     @State private var eventInfo: String = ""
     @State private var eventLocation: String = ""
@@ -63,6 +65,18 @@ struct CreateEventView: View {
                                   //  .padding()
                             }
                             HStack{
+                                
+                                Button("Invite") {
+                                    let newEvent = Event(id: UUID(), eventName: eventName, eventInfo: eventInfo, eventLocation: eventLocation,  date: date)
+                                    store.events.append(newEvent)
+                                }
+                                
+                              
+                                
+                                .buttonStyle(.glassProminent)
+                               // .disabled(eventName.isEmpty)
+                                Spacer()
+                                
                             Button("Save") {
                                 let newEvent = Event(id: UUID(), eventName: eventName, eventInfo: eventInfo, eventLocation: eventLocation,  date: date)
                                 store.events.append(newEvent)
@@ -73,7 +87,7 @@ struct CreateEventView: View {
                             .buttonStyle(.glassProminent)
                             .disabled(eventName.isEmpty || eventInfo.isEmpty || eventLocation.isEmpty)
                            
-                                Spacer()
+                               // Spacer()
                                 Button("Share") {
                                     
                                 }
