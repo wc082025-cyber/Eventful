@@ -20,7 +20,7 @@ struct ContentView: View {
         
         NavigationStack {
             
-            ZStack {
+            ZStack() {
                 Image("fish1")
                     .resizable()
                     .scaledToFill()
@@ -29,10 +29,33 @@ struct ContentView: View {
                // Color.mint.opacity(0.5)
                  // .ignoresSafeArea()
                 
+                VStack{
+                HStack{
+                    //Spacer()
+                        NavigationLink(destination: Settings()) {
+                            
+                            
+                            Image(systemName: "gear")
+                                .foregroundStyle(Color.black.opacity(0.8))
+                                .font(.custom("MarkerFelt-Thin", size: 30))
+                                .frame(width: 65, height: 65)
+                                .glassEffect(.clear.tint(.mint.opacity(0.5)).interactive())
+                                .position(x: 370, y: 10)
+                                .padding(.leading, 300)
+                                
+                                
+                        }
+                      
+                    }
+                    
+                }
+                
+                
                 HStack {
                     
                     VStack {
                         
+               Spacer()
                         
                         Text("Eventful")
                             .foregroundStyle(Color.black.opacity(0.7))
