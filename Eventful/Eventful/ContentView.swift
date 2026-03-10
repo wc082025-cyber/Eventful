@@ -30,7 +30,10 @@ struct ContentView: View {
                  // .ignoresSafeArea()
                 
                 VStack{
-                HStack{
+                    
+                   Spacer()
+         
+                HStack {
                     
                     if let user = userStore.currentUser {
                         Text("Hello, \(user.firstName)")
@@ -44,33 +47,33 @@ struct ContentView: View {
                             
                     }
                     
-                    //Spacer()
-                        NavigationLink(destination: Settings()) {
+                    
+                    
+                    NavigationLink(destination: Settings()) {
+                        
+                        
+                        Image(systemName: "gear")
+                            .foregroundStyle(Color.black.opacity(0.8))
+                            .font(.custom("MarkerFelt-Thin", size: 30))
+                            .frame(width: 50, height: 50)
+                        
+                            .glassEffect(.clear.tint(.mint.opacity(0.5)).interactive())
                             
                             
-                            Image(systemName: "gear")
-                                .foregroundStyle(Color.black.opacity(0.8))
-                                .font(.custom("MarkerFelt-Thin", size: 30))
-                                .frame(width: 50, height: 50)
                             
-                                .glassEffect(.clear.tint(.mint.opacity(0.5)).interactive())
-                                
-                                
-                                
-                        }
-                      
                     }
-                .padding(.horizontal)
-                .padding(.top, 10)
-                    
+                  
                 }
-                
-                
-                HStack {
+            .padding(.horizontal)
+            .padding(.top, 10)
                     
+                    
+                  Spacer()
                     VStack {
                         
-               Spacer()
+                        
+                        
+            
                         
                         Text("Eventful")
                             .foregroundStyle(Color.black.opacity(0.7))
@@ -125,4 +128,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(UserStore())
+                .environmentObject(EventStore())
 }
