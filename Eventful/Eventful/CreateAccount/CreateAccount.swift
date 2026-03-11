@@ -24,7 +24,7 @@ struct CreateAccount: View {
             HStack{
                 VStack{
                     
-                    Text("CreateAccount")
+                    Text("Create Account")
                         .padding(20)
                     
                     TextField("Email", text: $email)
@@ -99,7 +99,7 @@ struct CreateAccount: View {
             )
             
             if success {
-                print("Account created successfully!")
+                print("Account created")
                 // Optionally log them in automatically here
                 _ = userStore.login(username: username, password: password)
                 dismiss() // Return to the previous screen

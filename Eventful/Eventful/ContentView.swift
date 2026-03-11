@@ -33,42 +33,11 @@ struct ContentView: View {
                     
                    Spacer()
          
-                HStack {
+               
+                
+                
                     
-                    if let user = userStore.currentUser {
-                        Text("Hello, \(user.firstName)")
-                            .font(.headline)
-                            .padding(.leading)
-                    } else {
-                        Text("Not logged in")
-                            .font(.headline)
-                            .foregroundColor(.red)
-                            .padding(.leading)
-                            
-                    }
-                    
-                    
-                    
-                    NavigationLink(destination: Settings()) {
-                        
-                        
-                        Image(systemName: "gear")
-                            .foregroundStyle(Color.black.opacity(0.8))
-                            .font(.custom("MarkerFelt-Thin", size: 30))
-                            .frame(width: 50, height: 50)
-                        
-                            .glassEffect(.clear.tint(.mint.opacity(0.5)).interactive())
-                            
-                            
-                            
-                    }
-                  
-                }
-            .padding(.horizontal)
-            .padding(.top, 10)
-                    
-                    
-                  Spacer()
+                  //Spacer()
                     VStack {
                         
                         
@@ -113,13 +82,46 @@ struct ContentView: View {
                         }
                         Spacer()
                         
+                        
+                        if let user = userStore.currentUser {
+                            Text("Hello, \(user.firstName)")
+                                .font(.headline)
+                                .padding(.leading)
+                        } /*else {
+                            Text("")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                                .padding(.leading)
+                                
+                        }*/
+                        
+                      
+                        
+                        NavigationLink(destination: Settings()) {
+                            
+                            
+                            Image(systemName: "gear")
+                                .foregroundStyle(Color.black.opacity(0.8))
+                                .font(.custom("MarkerFelt-Thin", size: 40))
+                                .frame(width: 60, height: 60)
+                            
+                                .glassEffect(.clear.tint(.mint.opacity(0.5)).interactive())
+                                
+                                
+                                
+                        } // navlink
+
+                        
                     } // Vstack 1
                     
                     .padding()
                     
                 } // HStack 1
                 
+            
             }// ZStack 1
+            
+            
             
         } // NavigationStack
         
